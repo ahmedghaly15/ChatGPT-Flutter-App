@@ -4,7 +4,7 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a ChatGPT app built using Flutter and OpenAI API.
+This project is a ChatGPT-UI app built using Flutter.
 
 A few resources to get you started if this is your first Flutter project:
 
