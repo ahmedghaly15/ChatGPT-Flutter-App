@@ -43,6 +43,7 @@ class SendMessageTextField extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {},
+              splashColor: Colors.transparent,
               icon: const Icon(
                 Icons.send_rounded,
                 size: 24,

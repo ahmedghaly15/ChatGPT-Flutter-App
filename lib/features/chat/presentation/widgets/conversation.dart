@@ -12,7 +12,7 @@ class Conversation extends StatelessWidget {
       child: ListView.separated(
         physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.zero,
-        itemCount: 6,
+        itemCount: AppConstants.chatMessages.length,
         itemBuilder: (context, index) => ChatItem(
           msg: AppConstants.chatMessages[index]['msg'].toString(),
           chatIndex: int.parse(
