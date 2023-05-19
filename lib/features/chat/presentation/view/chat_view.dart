@@ -2,6 +2,7 @@ import 'package:chatgpt_flutter_app/core/global/app_assets.dart';
 import 'package:chatgpt_flutter_app/core/global/app_colors.dart';
 import 'package:chatgpt_flutter_app/core/global/app_styles.dart';
 import 'package:chatgpt_flutter_app/core/global/app_texts.dart';
+import 'package:chatgpt_flutter_app/features/chat/presentation/widgets/chat_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -43,18 +44,31 @@ class _ChatViewState extends State<ChatView> {
           children: <Widget>[
             const SizedBox(height: AppConstants.kDefaultPadding * 2),
             Flexible(
-              child: ListView.builder(
+              child: ListView.separated(
+                physics: const BouncingScrollPhysics(),
+                padding: EdgeInsets.zero,
                 itemCount: 6,
-                itemBuilder: (context, index) => const Text("Heelo"),
+                itemBuilder: (context, index) => ChatItem(
+                  msg: AppConstants.chatMessages[index]['msg'].toString(),
+                  chatIndex: int.parse(
+                    AppConstants.chatMessages[index]['chatIndex'].toString(),
+                  ),
+                ),
+                separatorBuilder: ((context, index) {
+                  return const SizedBox(
+                    height: AppConstants.kDefaultPadding * 2,
+                  );
+                }),
               ),
             ),
+            const SizedBox(height: AppConstants.kDefaultPadding * 2),
             if (_isTyping) ...[
               const SpinKitThreeBounce(
                 color: Colors.white,
                 size: 18,
                 duration: Duration(milliseconds: 1400),
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: AppConstants.kDefaultPadding * 2),
               Container(
                 decoration: BoxDecoration(
                   color: AppColors.cardColor,
@@ -74,6 +88,7 @@ class _ChatViewState extends State<ChatView> {
                           },
                           textCapitalization: TextCapitalization.sentences,
                           style: AppStyles.textStyle18,
+                          cursorColor: Colors.white,
                           decoration: const InputDecoration.collapsed(
                             hintText: AppTexts.textFieldHint,
                             hintStyle: AppStyles.textStyle16,
