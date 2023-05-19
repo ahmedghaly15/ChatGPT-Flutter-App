@@ -1,5 +1,36 @@
+import 'package:flutter/material.dart';
+
+import 'app_styles.dart';
+
 class AppConstants {
   static const double kDefaultPadding = 8.0;
+
+  static const List<String> models = [
+    "Model 1",
+    "Model 2",
+    "Model 3",
+    "Model 4",
+    "Model 5",
+    "Model 6",
+  ];
+
+  static List<DropdownMenuItem<String>>? get getModels {
+    List<DropdownMenuItem<String>> modelItems =
+        List<DropdownMenuItem<String>>.generate(models.length, (index) {
+      return DropdownMenuItem(
+        value: models[index],
+        child: Text(
+          models[index],
+          style: AppStyles.textStyle16.copyWith(
+            color: Colors.white,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      );
+    });
+
+    return modelItems;
+  }
 
   static const chatMessages = [
     {
