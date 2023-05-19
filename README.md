@@ -1,4 +1,4 @@
-# ChatGPT-Flutter-App
+# ChatGPT-Flutter-UI
 
 A new Flutter project.
 
